@@ -1,0 +1,19 @@
+﻿<title>Add Actor</title>
+
+<form method="post" action="@Url.Action("AddActor","Actor")">
+    <div>
+        <p>Name</p>
+        <input name="Name" id="Name" placeholder="Enter a name">
+    </div>
+    <div>
+        <p>Gender</p>
+        <select name="Gender" id="Gender" class="form-select">
+            <option value="man">Man</option>
+            <option value="woman">Woman</option>
+        </select>
+    </div>
+    <br/>
+    <div>
+        <input type="submit" value="Add" />
+    </div>
+</form>

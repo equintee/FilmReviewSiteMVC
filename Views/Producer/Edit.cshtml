@@ -1,0 +1,14 @@
+﻿@model ProducerTable
+<title>Producer @ViewBag.Producer.Id</title>
+
+<form method="post" action="@Url.Action("Edit","Producer")">
+    <div class="form-group">
+        <label for="ProducerName">Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@ViewBag.Producer.Name">
+    </div>
+    <div class="form-group">
+        <label for="ProducerAdress">Adress</label>
+        <input type="text" class="form-control" id="Adress" name="Adress" value="@ViewBag.Producer.Adress">
+    </div>
+    <button type="submit" class="btn btn-primary" @Html.ActionLink("Edit", "Edit", new { id = @ViewBag.ProducerId })></button>
+</form>

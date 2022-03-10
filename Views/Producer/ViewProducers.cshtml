@@ -1,0 +1,32 @@
+﻿@model ProducerTable
+<title>View Producers </title>
+
+<h2>Producers</h2>
+<form method="get">
+    <div>
+        <p>Filter by name</p>
+        <input type="text" name="Name" id="Name">
+        <button type="submit" value="Search" class="btn btn-outline-dark">Search</button>
+    </div>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Adress</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        @foreach (var producer in ViewBag.ProducerList)
+        {
+            <tr>
+                <th scope="col">@producer.Id</th>
+                <td>@producer.Name</td>
+                <td>@producer.Adress</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = producer.Id })</td>
+            </tr>
+        }
+
+    </table>
+</form>

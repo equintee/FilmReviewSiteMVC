@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\equinte\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\equinte\\.nuget\\packages"
+    ]
+  }
+}

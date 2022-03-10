@@ -1,0 +1,85 @@
+﻿@model MovieTable
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+<h1>@ViewBag.movie.Name</h1>
+<div>
+    <h2>Rating</h2>
+    <p>@ViewBag.movie.AverageRating</p>
+</div>
+
+<div>
+    <h2>Genre</h2>
+    <p>@ViewBag.movie.Genre</p>
+</div>
+
+<div>
+    <h2>Language</h2>
+    <p>@ViewBag.movie.Language</p>
+</div>
+
+<div>
+    <h2>Relase Date</h2>
+    <p>@ViewBag.movie.RelaseDate</p>
+</div>
+
+<div>
+    <h2>Subject</h2>
+    <p>@ViewBag.movie.Subject</p>
+</div>
+
+<div>
+    <h2>Producers</h2>
+    @foreach (var producer in ViewBag.producerList)
+    {
+        <p>@producer.Name</p>
+    }
+</div>
+
+<div>
+    <h2>Directors</h2>
+    @foreach (var director in ViewBag.directorList)
+    {
+        <p>@director.Name</p>
+    }
+</div>
+
+<div>
+    <h2>Actors</h2>
+    @foreach (var actor in ViewBag.actorList)
+    {
+        <p>@actor.Name</p>
+    }
+</div>
+
+<div>
+    <h2>Comments</h2>
+    @foreach (var comment in ViewBag.commentList)
+    {
+        @foreach (var user in ViewBag.userList)
+        {
+            @if (user.Id == comment.UserId)
+            {
+                <h3>User:@user.Name Rating:@comment.Rating</h3>
+
+                break;
+            }
+        }
+        <p>@comment.Comment</p>
+
+        <br>
+    }
+</div>
+
+@if ((bool)TempData["notCommented"] == true && HttpContextAccessor.HttpContext.Session.GetInt32("isAdmin") != null)
+{
+    <form action="@Url.Action("Comment","Movie")" method="post">
+        <div>
+            <textarea name="Comment" id="Comment" style="font-family:sans-serif;font-size:1.2em;"></textarea>
+        </div>
+        <input type="number" id="Rating" name="Rating" min="1" max="5">
+        <input type="submit" value="Submit">
+    </form>
+}
+
+

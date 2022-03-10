@@ -1,0 +1,17 @@
+﻿@model ActorsTable
+<title>ActorID @ViewBag.ActorId</title>
+
+<form method="post" action="@Url.Action("Edit","Actor")">
+    <div class="form-group">
+        <label for="ActorName">Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@ViewBag.Actor.Name">
+    </div>
+    <div class="form-group">
+        <label for="ActorGender">Gender</label>
+        <select class="form-select" name="Gender" id="Gender">
+            <option selected value="Man">Man</option>
+            <option value="Woman">Woman</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" @Html.ActionLink("Edit", "Edit", new { id = @ViewBag.ActorId })></button>
+</form>

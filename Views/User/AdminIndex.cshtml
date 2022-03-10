@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+<title>Admin Menu</title>
+
+@if (HttpContextAccessor.HttpContext.Session.GetInt32("isAdmin") == 1)
+{
+    <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="AddMovie">Add Movie</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="ViewMovies">View Movies</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Actor" asp-action="AddActor">Add Actor</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Actor" asp-action="ViewActors">View Actor</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Director" asp-action="AddDirector">Add Director</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Director" asp-action="ViewDirectors">View Director</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Producer" asp-action="AddProducer">Add Producer</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Producer" asp-action="ViewProducers">View Producer</a>
+}

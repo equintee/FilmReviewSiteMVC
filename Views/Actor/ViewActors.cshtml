@@ -1,0 +1,32 @@
+﻿@model ActorsTable
+<title>View Actors </title>
+
+<h2>Actors</h2>
+<form method="get">
+    <div>
+        <p>Filter by name</p>
+        <input type="text" name="Name" id="Name">
+        <button type="submit" value="Search" class="btn btn-outline-dark">Search</button>
+    </div>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        @foreach (var actor in ViewBag.ActorList)
+        {
+            <tr>
+                <th scope="col">@actor.Id</th>
+                <td>@actor.Name</td>
+                <td>@actor.Gender</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = actor.Id })</td>
+            </tr>
+        }
+
+    </table>
+</form>

@@ -1,0 +1,47 @@
+﻿<title>Add Movie</title>
+
+<form method="post" action="@Url.Action("AddMovie","Movie")">
+    <div>
+        <p>Name</p>
+        <input name="Name" id="Name" placeholder="Enter a name">
+    </div>
+    <div>
+        <p>Genre</p>
+        <input name="Genre" id="Genre" placeholder="Genre">
+    </div>
+    <div>
+        <p>Language</p>
+        <input name="Language" id="Language" placeholder="Language">
+    </div>
+
+    <div>
+        <p>Relase Date</p>
+        <input type="date" name="relaseDate" />
+    </div>
+
+    <div>
+        <p>Subject</p>
+        <input name="Subject" id="Subject" placeholder="Subject">
+    </div>
+
+    <div>
+        <p>Producers</p>
+        <select name="ProducerId[]" id="ProducerId[]" multiple="multiple" asp-items="ViewBag.producerList"></select>
+    </div>
+
+    <div>
+        <p>Directors</p>
+        <select name="DirectorId[]" id="DirectorId[]" multiple="multiple" asp-items="ViewBag.directorList"></select>
+    </div>
+
+    <div>
+        <p>Actors</p>
+        <select name="ActorId[]" id="ActorId[]" multiple="multiple" asp-items="ViewBag.actorList"></select>
+    </div>
+
+    <br />
+
+    <div>
+        <input type="submit" value="Add" />
+    </div>
+</form>

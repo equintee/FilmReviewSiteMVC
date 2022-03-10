@@ -1,0 +1,17 @@
+﻿@model DirectorTable
+<title>Director @ViewBag.Director.Id</title>
+
+<form method="post" action="@Url.Action("Edit","Director")">
+    <div class="form-group">
+        <label for="DirectorName">Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@ViewBag.Director.Name">
+    </div>
+    <div class="form-group">
+        <label for="DirectorGender">Password</label>
+        <select class="form-select" name="Gender" id="Gender">
+            <option selected value="Man">Man</option>
+            <option value="Woman">Woman</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" @Html.ActionLink("Edit", "Edit", new { id = @ViewBag.DirectorId })></button>
+</form>

@@ -1,0 +1,47 @@
+﻿@model MovieTable
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+<title>View Movies </title>
+
+<h2>Movies</h2>
+<form method="get">
+    <div>
+        <p>Filter by name</p>
+        <input type="text" name="Name" id="Name">
+        <button type="submit" value="Search" class="btn btn-outline-dark">Search</button>
+    </div>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Language</th>
+                <th scope="col">Comment</th>
+                @if (HttpContextAccessor.HttpContext.Session.GetInt32("isAdmin") == 1)
+                {
+                    <th scope="col">Active</th>
+                    <th scope="col">Change Status</th>
+                }
+            </tr>
+            </thead>
+            @foreach (var movie in ViewBag.movieList)
+            {
+    <tr>
+        <th scope="col">@movie.Id</th>
+        <td>@movie.Name</td>
+        <td>@movie.Genre</td>
+        <td>@movie.Language</td>
+        <td>@Html.ActionLink("Comment", "Comment", new { id = movie.Id })</td>
+        @if (HttpContextAccessor.HttpContext.Session.GetInt32("isAdmin") == 1)
+        {
+            <td>@movie.IsActive</td>
+            <td>@Html.ActionLink("ChangeStatus", "ChangeStatus", new { id = movie.Id })</td>
+        }
+
+    </tr>
+            }
+
+        </table>
+    </form>
